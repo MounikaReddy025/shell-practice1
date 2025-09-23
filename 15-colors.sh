@@ -24,10 +24,24 @@ dnf list installed mysql
 # Install if it is not found
 if [ $? -ne 0 ]; then
     dnf install mysql -y
-VALIDATE $? "MYSQL"
+    VALIDATE $? "MYSQL"
+else
+    echo -e "MYSQL already exist ...$Y SKIPPING $N"
+fi
 
-dnf install nginx -y
-VALIDATE $? "Nginx"
+dnf list installed nginx
+if [ $? -ne 0 ]; then
+    dnf install nginx -y
+    VALIDATE $? "Nginx"
+else
+    echo -e "Nginx already exist ...$Y SKIPPING $N"
+fi
 
-dnf install python3 -y
-VALIDATE $? "python3"
+dnf list installed python3
+if [ $? -ne 0 ]; then
+    dnf install python3 -y
+    VALIDATE $? "python3"
+else
+    echo -e "python3 already exist ...$Y SKIPPING $N"
+fi
+
