@@ -2,7 +2,7 @@
 
 set -e
 
-trap(){
+error(){
     echo "Ther is an error"
 }
 
